@@ -2,11 +2,6 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <gazebo>
-
-        <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-
-    <gazebo>
         <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
     
     
@@ -32,10 +27,6 @@
     
     
         </plugin>
-    </gazebo>
-
-    </robot>
-
     </gazebo>
 
 </robot>
