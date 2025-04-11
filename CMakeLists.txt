@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(my_bot)
 
+
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
@@ -17,7 +18,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclpy REQUIRED)
+find_package(ament_cmake_python REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -29,6 +30,27 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+
+
+# Add Python scripts
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+# Install Python modules
+install(
+  DIRECTORY my_bot_py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Use setuptools to install console scripts
+ament_python_install_package(${PROJECT_NAME}_py)
+
+# Install entry points (scripts)
+install(PROGRAMS
+  my_bot_py/ultrasonic_relay.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 
 install(
   DIRECTORY config description launch worlds

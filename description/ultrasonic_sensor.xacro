@@ -65,12 +65,14 @@
 
         <plugin name="ultrasonic_front_left" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <remapping>~/scan:=/ultrasonic_front_left</remapping>
+            <namespace>/</namespace> <!-- publish to global namespace -->
           </ros>
+          <topic_name>ultrasonic_front_left</topic_name>
           <output_type>sensor_msgs/Range</output_type>
           <radiation_type>ultrasound</radiation_type>
           <frame_name>front_left_sensor_link</frame_name>
-        </plugin>
+      </plugin>
+
 
 
 

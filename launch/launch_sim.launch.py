@@ -42,9 +42,20 @@ def generate_launch_description():
         output='screen'
     )
 
+
+
+#     relay_node = Node(
+#         package='my_bot',
+#         executable='ultrasonic_relay',
+#         name='ultrasonic_relay',
+#         output='screen'
+# )
+
+
     return LaunchDescription([
         rsp,
         gazebo,
-        spawn_entity
+        spawn_entity,
+        # relay_node
     ])
 
