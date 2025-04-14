@@ -6,26 +6,5 @@
     <xacro:include filename="ultrasonic_sensor.xacro" />
 
 </robot>
-    <!--  -->
-
-    <!-- <xacro:ultrasonic_sensor sensor_name="front_left_sensor" parent_link="chassis">
-    <origin xyz="0.25 0.15 0.15" rpy="0 0 0"/>
-    </xacro:ultrasonic_sensor> -->
-
-    <!-- <xacro:ultrasonic_sensor sensor_name="front_center_sensor" parent_link="chassis">
-    <origin xyz="0.30 0 0.15" rpy="0 0 0"/>
-    </xacro:ultrasonic_sensor>
-
-    <xacro:ultrasonic_sensor sensor_name="front_right_sensor" parent_link="chassis">
-    <origin xyz="0.25 -0.15 0.15" rpy="0 0 0"/>
-    </xacro:ultrasonic_sensor>
-
-    <xacro:ultrasonic_sensor sensor_name="rear_left_sensor" parent_link="chassis">
-    <origin xyz="0.05 0.15 0.15" rpy="0 0 ${pi}"/>
-    </xacro:ultrasonic_sensor>
-
-    <xacro:ultrasonic_sensor sensor_name="rear_right_sensor" parent_link="chassis">
-    <origin xyz="0.05 -0.15 0.15" rpy="0 0 ${pi}"/>
-    </xacro:ultrasonic_sensor> -->
-
+    
 

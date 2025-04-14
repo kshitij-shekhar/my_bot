@@ -3,10 +3,12 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import IncludeLaunchDescription,TimerAction
 from launch_ros.actions import Node
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
+from launch_ros.actions import Node
+
 
 def generate_launch_description():
     package_name = 'my_bot'  # Replace with your actual package name
@@ -28,6 +30,15 @@ def generate_launch_description():
 )
 
 
+    static_transform_publisher = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='static_tf_pub_map_odom',
+        arguments=['0', '0', '0', '0', '0', '0', 'map', 'odom'],
+        output='screen'
+    )
+
+
     # Spawn robot on the ground plane
     spawn_entity = Node(
         package='gazebo_ros',
@@ -43,19 +54,27 @@ def generate_launch_description():
     )
 
 
+    nav2 = TimerAction(
+        period=8.0,  # ⏱️ Wait 8 seconds before launching Nav2
+        actions=[
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([
+                    os.path.join(get_package_share_directory(package_name), 'launch', 'nav2.launch.py')
+                ])
+            )
+        ]
+    )
 
-#     relay_node = Node(
-#         package='my_bot',
-#         executable='ultrasonic_relay',
-#         name='ultrasonic_relay',
-#         output='screen'
-# )
+
+
+
 
 
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
-        # relay_node
+        static_transform_publisher,
+        nav2
     ])
 
